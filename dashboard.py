@@ -25,7 +25,7 @@ response = requests.request("GET", url, headers=headers, data=payload)
 
 df = pd.DataFrame(json.loads(response.text)['data'])
 df['priceUsd'] = df['priceUsd'].astype(float)
-df['date']= df['date'].astype('datetime64')
+df['date']= df['date'].astype('datetime64[ns]')
 df = df.drop(columns='time')
 df.set_index('date')
 
